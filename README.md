@@ -36,3 +36,4 @@ dotnet new worker
 
 Then publish as service: https://learn.microsoft.com/en-us/dotnet/core/extensions/windows-service
 
+## Authentication
