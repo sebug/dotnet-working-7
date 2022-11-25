@@ -40,3 +40,6 @@ Then publish as service: https://learn.microsoft.com/en-us/dotnet/core/extension
 dotnet aspnet-codegenerator identity -dc AuthSample.Data.ApplicationDbContext --files "Account.Register" -sqlite
 
 for code generation for customization of the pages.
+
+asp-validation-summary custom attribute.
+
