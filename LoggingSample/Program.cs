@@ -1,7 +1,18 @@
+using LoggingSample;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Logging.ClearProviders();
+
+var config = new ColoredConsoleLoggerConfiguration
+{
+    LogLevel = LogLevel.Information,
+    Color = ConsoleColor.Red
+};
+builder.Logging.AddProvider(new ColoredConsoleLoggerProvider(config));
 
 var app = builder.Build();
 
