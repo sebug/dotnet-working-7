@@ -10,7 +10,7 @@ builder.Logging.ClearProviders();
 var config = new ColoredConsoleLoggerConfiguration
 {
     LogLevel = LogLevel.Information,
-    Color = ConsoleColor.Red
+    Color = ConsoleColor.DarkMagenta
 };
 builder.Logging.AddProvider(new ColoredConsoleLoggerProvider(config));
 
