@@ -17,3 +17,11 @@ environment variables override.
 
 ## DI
 If you add your own container, then the standard one will continue working.
+
+## Certificates
+Load manually from Kestrel.
+
+    options.Listen(IPAddress.Loopback, 5001, options => {
+        listenOptions.UseHttps("cert.pfx", pwd);
+    });
+
