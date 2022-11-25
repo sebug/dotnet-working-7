@@ -1,20 +1,25 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ConfigSample.Models;
+using Microsoft.Extensions.Options;
 
 namespace ConfigSample.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IOptions<AppSettings> _config;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger,
+    IOptions<AppSettings> config)
     {
         _logger = logger;
+        _config = config;
     }
 
     public IActionResult Index()
     {
+        ViewData["Message"] = _config.Value.Bar;
         return View();
     }
 
