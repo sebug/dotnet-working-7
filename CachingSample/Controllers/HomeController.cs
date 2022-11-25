@@ -13,7 +13,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [ResponseCache(Duration=10)]
+    //[ResponseCache(Duration=10)]
     public IActionResult Index()
     {
         return View();

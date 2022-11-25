@@ -43,3 +43,5 @@ for code generation for customization of the pages.
 
 asp-validation-summary custom attribute.
 
+## Cache
+Response cache: can add cache profiles.

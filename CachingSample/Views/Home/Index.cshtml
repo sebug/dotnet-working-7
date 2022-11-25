@@ -3,3 +3,7 @@
 }
 
 <p>The current time is @DateTimeOffset.Now</p>
+
+<cache expires-sliding="@TimeSpan.FromSeconds(5)">
+    <p>The drin gecacht: @DateTimeOffset.Now.Second</p>
+</cache>
