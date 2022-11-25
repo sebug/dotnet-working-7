@@ -14,11 +14,19 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = context =>
+    {
+       context.Context.Response.Headers.TryAdd("Cache-Control", $"public, max-age=90000");
+    }
+});
 
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseResponseCaching();
 
 app.MapControllerRoute(
     name: "default",
