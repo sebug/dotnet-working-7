@@ -15,10 +15,17 @@ public class PersonController : ControllerBase
     }
 
     [HttpGet]
-    public List<Person> Get()
+    public ActionResult<List<Person>> Get()
     {
         var people = A.ListOf<Person>();
 
         return people;
+    }
+
+    [HttpPost]
+    public IEnumerable<Person> Post([ModelBinder(binderType: typeof(PersonsCsvBinder))]
+    IEnumerable<Person> persons)
+    {
+        return persons;
     }
 }
