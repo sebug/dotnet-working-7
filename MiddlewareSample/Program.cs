@@ -1,16 +1,11 @@
 using System.Diagnostics;
+using MiddlewareSample;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 
-app.Use(async (context, next) => {
-    var s = new Stopwatch();
-    s.Start();
-    await next(context);
-    s.Stop();
-    await context.Response.WriteAsync("^^^ " + s.Elapsed);
-});
+app.UseMiddleware<StopwatchMiddleware>();
 
 app.MapGet("/", () => "Hello .NETworking!");
 
