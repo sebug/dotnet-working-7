@@ -2,6 +2,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddMemoryCache();
+builder.Services.AddOutputCache();
 
 var app = builder.Build();
 
@@ -27,9 +29,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseResponseCaching();
+app.UseOutputCache();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapGet("/time", () => DateTime.Now.AddSeconds(5));
 
 app.Run();
