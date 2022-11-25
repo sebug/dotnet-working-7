@@ -9,3 +9,8 @@ Build your own logger.
 Snippets here: https://gist.github.com/JuergenGutsch
 
 When adding loggers, the standard ones stay around.
+
+## Configuring Configuration
+$"appsettings.{env.EnvironmentName}.json"
+
+environment variables override.
