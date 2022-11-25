@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 
-app.UseMiddleware<StopwatchMiddleware>();
+app.AddStopWatch();
 
 app.MapGet("/", () => "Hello .NETworking!");
 
