@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AuthSample.Data;
+using IdentityManager2.AspNetIdentity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<WebAppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddRazorPages();
+builder.Services.AddIdentity<WebAppUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddIdentityManager()
+.AddIdentityMangerService<AspNetCoreIdentityManagerService<WebAppUser, string, IdentityRole, string>>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -34,6 +41,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseIdentityManager();
 
 app.MapControllerRoute(
     name: "default",
