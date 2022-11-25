@@ -1,16 +1,17 @@
+using System.Diagnostics;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 
 app.Use(async (context, next) => {
-    await context.Response.WriteAsync("===");
-    await next();
-    await context.Response.WriteAsync("^^^");
+    var s = new Stopwatch();
+    s.Start();
+    await next(context);
+    s.Stop();
+    await context.Response.WriteAsync("^^^ " + s.Elapsed);
 });
 
-app.Use(async (HttpContext context, Func<Task> next) => {
-await context.Response.WriteAsync("Hey .NETWorking");
-});
-
+app.MapGet("/", () => "Hello .NETworking!");
 
 app.Run();
