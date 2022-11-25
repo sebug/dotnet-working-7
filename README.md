@@ -34,3 +34,6 @@ https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=a
 ## Hosted Services
 dotnet new worker
 
+Then publish as service: https://learn.microsoft.com/en-us/dotnet/core/extensions/windows-service
+
+;
