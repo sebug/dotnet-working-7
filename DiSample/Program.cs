@@ -1,4 +1,12 @@
+using Autofac;
+using DiSample;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseAutofacServiceProvider();
+builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+{
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

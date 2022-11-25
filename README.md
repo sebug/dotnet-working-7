@@ -14,3 +14,6 @@ When adding loggers, the standard ones stay around.
 $"appsettings.{env.EnvironmentName}.json"
 
 environment variables override.
+
+## DI
+If you add your own container, then the standard one will continue working.
